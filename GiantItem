@@ -1,0 +1,13 @@
+  public static void riesenitem(final Location loc, final ItemStack istack) {
+        final Giant g = (Giant)loc.getWorld().spawn(loc, (Class)Giant.class);
+        g.getEquipment().setItemInHand(istack);
+        g.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 999));
+        g.getLocation().setYaw(loc.getYaw());
+        g.getLocation().setPitch(loc.getPitch());
+        final ArmorStand as = (ArmorStand)loc.getWorld().spawn(loc, (Class)ArmorStand.class);
+        as.setGravity(false);
+        as.setVisible(false);
+        as.setPassenger((Entity)g);
+        as.getLocation().setYaw(loc.getYaw());
+        as.getLocation().setPitch(loc.getPitch());
+    }
