@@ -1,0 +1,43 @@
+package com.cloud.spawners;
+
+import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
+/**
+ * author: don't
+ * */
+public enum EntityHead {
+
+    BAT("Morcego", "MHF_Bat"), BLAZE("Blaze", "MHF_Blaze"), CAVE_SPIDER("Aranha da Caverna", "MHF_CaveSpider"),
+    CHICKEN("Galinha", "MHF_Chicken"), COW("Vaca", "MHF_Cow"), CREEPER("Creeper", "MHF_Creeper"),
+    ELDER_GUARDIAN("Guardião Mestre", "MHF_Guardian"), ENDERMAN("Enderman", "MHF_Enderman"),
+    GHAST("Ghast", "MHF_Ghast"), GIANT("Zumbi Gigante", "MHF_Zombie"), GUARDIAN("Guardião", "MHF_Guardian"),
+    IRON_GOLEM("Iron Golem", "MHF_Golem"), OCELOT("Jaguatirica", "MHF_Ocelot"), PIG("Porco", "MHF_Pig"),
+    PIG_ZOMBIE("Porco Zumbi", "MHF_PigZombie"), SHEEP("Ovelha", "MHF_Sheep"), WITCH("Bruxa", "MHF_Witch"),
+    SKELETON("Esqueleto", "MHF_Skeleton"), SLIME("Slime", "MHF_Slime"), SPIDER("Aranha", "MHF_Spider"),
+    SQUID("Lula", "MHF_Squid"), VILLAGER("Vilager", "MHF_Villager"),
+    WITHER_SKELETON("Esqueleto Wither", "MHF_WSkeleton"), WITHER("Wither", "MHF_Wither"),
+    MAGMA_CUBE("Lava Slime", "MHF_LavaSlime"), MUSHROOM_COW("Vaca Cogumelo", "MHF_MushroomCow"),
+    ZOMBIE("Zumbi", "MHF_Zombie");
+
+    private String traduzido;
+    private ItemStack item;
+
+    EntityHead(String traduzido, String skull) {
+	this.traduzido = traduzido;
+	this.item = new ItemBuilder(Material.SKULL_ITEM, 1, (byte) 3).setSkullOwner(skull).toItemStack();
+    }
+
+    public String getTranslatedName() {
+	return traduzido;
+    }
+
+    public ItemStack getHead() {
+	return item;
+    }
+
+    public EntityHead valueOf(EntityType entityType) {
+	return EntityHead.valueOf(entityType.name());
+    }
+
+}
