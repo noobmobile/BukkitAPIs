@@ -1,0 +1,66 @@
+package com.dont.trade.utils;
+
+import org.apache.commons.lang3.StringUtils;
+
+/**
+ * author: don't
+ **/
+
+public class ProgressBar {
+
+	private int current, max, bars;
+	private String completed, notCompleted, symbol;
+
+	public ProgressBar() {
+		// default values
+		current = 0;
+		max = 10;
+		bars = 5;
+		completed = "§a";
+		notCompleted = "§c";
+		symbol = "|";
+	}
+
+	public ProgressBar current(int current) {
+		this.current = current;
+		return this;
+	}
+
+	public ProgressBar max(int max) {
+		this.max = max;
+		return this;
+	}
+
+	public ProgressBar bars(int bars) {
+		this.bars = bars;
+		return this;
+	}
+
+	public ProgressBar completed(String completed) {
+		this.completed = completed;
+		return this;
+	}
+
+	public ProgressBar notCompleted(String notCompleted) {
+		this.notCompleted = notCompleted;
+		return this;
+	}
+
+	public ProgressBar symbol(String symbol) {
+		this.symbol = symbol;
+		return this;
+	}
+
+	public String build() {
+		float percent = (float) current / max;
+		int progressBars = (int) (bars * percent);
+
+		return StringUtils.repeat(completed + symbol, progressBars) + StringUtils.repeat(notCompleted + symbol, bars - progressBars);
+	}
+
+	@Override
+	public String toString() {
+		return build();
+	}
+
+}
